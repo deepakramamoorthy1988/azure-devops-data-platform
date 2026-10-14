@@ -15,32 +15,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source branch
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+
+      - name: Checkout published ARM templates
+        uses: actions/checkout@v4
+        with:
+          ref: adf_publish
+          path: published
 
       - name: Check repository structure
         run: |
           echo "Checking Azure Data Factory project..."
 
-          test -d dataset
-          test -d pipeline
-          test -d linkedService
-          test -d factory
+          test -d source/dataset
+          test -d source/pipeline
+          test -d source/linkedService
+          test -d source/factory
 
           echo "ADF project folders found successfully."
 
       - name: Check published ARM templates
         run: |
-          if [ -f "adf-devplatform-2026/ARMTemplateForFactory.json" ]; then
-            echo "Published ARM template found."
-          else
-            echo "ARM template not found."
-            exit 1
-          fi
+          test -f published/adf-devplatform-2026/ARMTemplateForFactory.json
+          test -f published/adf-devplatform-2026/ARMTemplateParametersForFactory.json
 
-          if [ -f "adf-devplatform-2026/ARMTemplateParametersForFactory.json" ]; then
-            echo "ARM parameters file found."
-          else
-            echo "ARM parameters file not found."
-            exit 1
-          fi
+          echo "Both ARM template files found successfully."
