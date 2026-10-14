@@ -9,6 +9,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   validate:
     name: Validate ADF Project
@@ -44,3 +48,15 @@ jobs:
           test -f published/adf-devplatform-2026/ARMTemplateParametersForFactory.json
 
           echo "Both ARM template files found successfully."
+
+      - name: Validate ARM template JSON
+        run: |
+          python -m json.tool \
+            published/adf-devplatform-2026/ARMTemplateForFactory.json \
+            > /dev/null
+
+          python -m json.tool \
+            published/adf-devplatform-2026/ARMTemplateParametersForFactory.json \
+            > /dev/null
+
+          echo "Both ARM templates contain valid JSON."
