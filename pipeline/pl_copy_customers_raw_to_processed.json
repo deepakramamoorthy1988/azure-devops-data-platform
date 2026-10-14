@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy_Customers_Raw_To_Processed",
+				"description": "Copies customer data from the raw ADLS Gen2 location to the processed location.",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
