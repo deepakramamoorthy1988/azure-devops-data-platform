@@ -1,0 +1,15 @@
+{
+	"name": "adf-devplatform-2026",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "45c72bbb-acef-4859-8e1c-cccf40be00ae",
+		"tenantId": "a050132d-a393-4e57-977c-69aad51e3ccc"
+	}
+}

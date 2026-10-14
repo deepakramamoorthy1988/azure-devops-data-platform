@@ -1,0 +1,11 @@
+{
+	"name": "ls_adls_gen2_managed_identity",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsdevplatform2026.dfs.core.windows.net/"
+		}
+	}
+}
